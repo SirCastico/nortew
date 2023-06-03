@@ -11,7 +11,7 @@ parser.add_argument('-t','--table', required=False, help='nome da tabela onde da
 
 parser.add_argument('-f','--filename', required=False, help='nome do ficheiro a ler')
 
-parser.add_argument('-c', '--connection', nargs='+', required=False, help='argumentos de conexão para base de dados. Formato -> "host user password database"')
+parser.add_argument('-c', '--connection', nargs='+', required=False, help='argumentos de conexão para base de dados. Formato -> host user password database')
 
 args: argparse.Namespace = parser.parse_args()
 
@@ -32,7 +32,7 @@ if args.table and args.filename and args.connection:
 
         print(sql_q)
 
-        db: MySQLdb.Connection = MySQLdb.connect('localhost','root','root','nortew')
+        db: MySQLdb.Connection = MySQLdb.connect(*args.connection)
 
         cursor: MySQLdb.cursors.Cursor = db.cursor()
 
