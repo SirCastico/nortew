@@ -1,0 +1,6 @@
+Referência,Modelo,Marca,Código_EAN,Preço,Categoria
+1, Frigs, MuitoFrio, 123123, 150, Frio
+2, Frigs, BastanteFrio, 163123, 170, Frio
+3, Aqueces, MuitoQuente, 064151, 50, Calor
+4, Aqueces, BastanteQuente, 064191, 70, Calor
+5, Vento, VentoForte, 21404, 40, Vento

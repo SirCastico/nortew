@@ -1,0 +1,14 @@
+#valid_names = {
+#    'armazém': ('id','Rua','Cidade','Código Postal'),
+#    'cliente': ('NIF', 'Nome', 'Email'),
+#    'disponível': ('Produto_Referência', 'Loja_id', 'Quantidade'),
+#    'fornecedor': ('idFornecedor', 'Email', 'Nome', 'Nr_Telefone'),
+#    'forneceloja': ('Armazém_id', 'Loja_id'),
+#    'forneceprod': ('Produto_Referência', 'Fornecedor_idFornecedor'),
+#    'funcionário': ('id', 'Nome', 'Email', 'Salário', 'Nr_Telefone', 'Loja_id'),
+#    'guardado': ('Armazém_id', 'Produto_Referência', 'Quantidade'),
+#    'loja': ('id', 'Rua', 'Cidade', 'Código Postal'),
+#    'produto': ('Referência', 'Modelo', 'Marca', 'Código_EAN', 'Preço', 'Categoria'),
+#    'venda': ('id', 'Data_Realização', 'Montante_Total', 'Loja_id', 'Cliente_NIF', 'Funcionário_id'),
+#    'vendido': ('Venda_id', 'Produto_Referência', 'Montante', 'Quantidade')
+#}
