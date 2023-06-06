@@ -1,17 +1,22 @@
 use nortew;
 
+# O sistema deve ser capaz de apresentar uma lista de vendas ordenada por data.
 SELECT * 
 	FROM venda ORDER BY Data_Realização DESC;
 
+# O sistema deve ser capaz de apresentar uma lista de produtos ordenada alfabeticamente por marca.
 SELECT produto.*
 	FROM produto ORDER BY Marca;
 
+# O sistema deve ser capaz de apresentar uma lista de produtos ordenada decrescentemente pelos mais vendidos.
 SELECT P.*, COUNT(V.Venda_id) AS N_Vendas
 	FROM produto AS P LEFT OUTER JOIN vendido AS V 
 		ON P.Referência = V.Produto_Referência
     GROUP BY P.Referência
     ORDER BY N_Vendas DESC;
 
+
+# O sistema deve conseguir apresentar uma lista de vendas de uma dada loja.
 DELIMITER $$
 CREATE PROCEDURE vendas_loja(loja_id_in INT)
 BEGIN
@@ -19,8 +24,8 @@ BEGIN
 		venda WHERE Loja_id = loja_id_in;
 END $$
     
-CALL vendas_loja(2);
-
+    
+# O sistema deve conseguir apresentar uma lista de produtos de uma dada loja, incluindo a sua quantidade.
 DELIMITER $$
 CREATE PROCEDURE produtos_loja(loja_id_in INT)
 BEGIN
@@ -29,7 +34,6 @@ BEGIN
 			INNER JOIN produto AS P ON P.Referência=D.Produto_Referência;
 END $$
 
-CALL produtos_loja(2);
 
 DELIMITER $$
 CREATE PROCEDURE produtos_fornecedor(fornecedor_in INT)
@@ -39,8 +43,8 @@ BEGIN
 			INNER JOIN produto AS P ON P.Referência=FP.Produto_Referência;
 END $$
 
-CALL produtos_fornecedor(1);
 
+# O sistema deve permitir ver que armazéns fornecem uma dada loja
 DELIMITER $$
 CREATE PROCEDURE armazens_de_loja(loja_in INT)
 BEGIN
@@ -49,9 +53,8 @@ BEGIN
 			INNER JOIN armazém AS A ON A.id=FL.Armazém_id;
 END $$
 
-CALL armazens_de_loja(1);
 
-
+# O sistema deve ter capacidade de pesquisar em que armazens um dado produto existe, incluindo a sua quantidade no resultado
 DELIMITER $$
 CREATE PROCEDURE armazens_de_produto(produto_in INT)
 BEGIN
@@ -60,6 +63,11 @@ BEGIN
 			INNER JOIN armazém AS A ON A.id=G.Armazém_id;
 END $$
 
-CALL armazens_de_produto(1);
 
+CREATE VIEW produtos_vendas_view AS
+	SELECT P.*, COUNT(V.Venda_id) AS N_Vendas
+	FROM produto AS P LEFT OUTER JOIN vendido AS V 
+		ON P.Referência = V.Produto_Referência
+    GROUP BY P.Referência
+    ORDER BY N_Vendas DESC;
 

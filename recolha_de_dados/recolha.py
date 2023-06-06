@@ -11,7 +11,7 @@ parser.add_argument('-t','--table', required=False, help='nome da tabela onde da
 
 parser.add_argument('-f','--filename', required=False, help='nome do ficheiro a ler')
 
-parser.add_argument('-c', '--connection', nargs='+', required=False, help='argumentos de conexão para base de dados. Formato -> host user password database')
+parser.add_argument('-c', '--connection', nargs='+', required=False, help='argumentos de conexão para base de dados. Formato -> -c host user password database')
 
 args: argparse.Namespace = parser.parse_args()
 
